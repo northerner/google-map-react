@@ -77,6 +77,7 @@ export default class GoogleMap extends Component {
     defaultZoom: PropTypes.number,
     zoom: PropTypes.number,
     onBoundsChange: PropTypes.func,
+    onDoubleClick: PropTypes.func,
     onChange: PropTypes.func,
     onClick: PropTypes.func,
     onChildClick: PropTypes.func,
@@ -473,6 +474,12 @@ export default class GoogleMap extends Component {
 
       maps.event.addListener(map, 'drag', () => {
         this_.dragTime_ = (new Date()).getTime();
+      });
+
+      maps.event.addListener(map, 'dblclick', function (event) {
+        if (_this.props.onDoubleClick) {
+          _this.props.onDoubleClick({latitude: event.latLng.J, longitude: event.latLng.M})
+        }
       });
 
       if (this.props.onGoogleApiLoaded) {
