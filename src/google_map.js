@@ -477,8 +477,8 @@ export default class GoogleMap extends Component {
       });
 
       maps.event.addListener(map, 'dblclick', function (event) {
-        if (_this.props.onDoubleClick) {
-          _this.props.onDoubleClick({latitude: event.latLng.J, longitude: event.latLng.M})
+        if (this_.props.onDoubleClick) {
+          this_.props.onDoubleClick({latitude: event.latLng.J, longitude: event.latLng.M})
         }
       });
 
