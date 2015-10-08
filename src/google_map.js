@@ -326,6 +326,7 @@ export default class GoogleMap extends Component {
 
       // render in overlay
       const this_ = this;
+      const props = this.props;
       const overlay = this.overlay_ = assign(new maps.OverlayView(), {
         onAdd() {
           const K_MAX_WIDTH = (typeof screen !== 'undefined') ? `${screen.width}px` : '2000px';
@@ -477,8 +478,8 @@ export default class GoogleMap extends Component {
       });
 
       maps.event.addListener(map, 'dblclick', function (event) {
-        if (this_.props.onDoubleClick) {
-          this_.props.onDoubleClick({latitude: event.latLng.J, longitude: event.latLng.M})
+        if (props.onDoubleClick) {
+          props.onDoubleClick({latitude: event.latLng.J, longitude: event.latLng.M})
         }
       });
 
